@@ -6,8 +6,8 @@ const input = document.getElementById("characters-input");
 
 const app = new App({
   canvas,
-  width: 1024,
-  height: 960,
+  width: document.documentElement.clientWidth,
+  height: document.documentElement.clientHeight,
   fps: 1000 / 60,
   interval: 100,
   fontSize: 48,

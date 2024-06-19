@@ -65,7 +65,6 @@ export class App {
     this.fontSize = attrs.fontSize || 32;
     this.fontFamily = attrs.fontFamily || "serif";
     this.interval = attrs.interval;
-    this.splitState = "char";
     this.inputs = [];
     this.chars = [];
 
@@ -74,14 +73,13 @@ export class App {
   }
 
   addChars(newInputs) {
-    this.inputs = this.inputs.concat(
-      newInputs.split(this.splitState === "char" ? "" : " ")
-    );
+    this.inputs = this.inputs.concat(newInputs.replaceAll(" ", "").split(""));
   }
 
   render() {
     let now, delta, lastCharAdded;
     let then = Date.now();
+    let prevCount = 0;
 
     this.ctx.font = `${this.fontSize}px ${this.fontFamily}`;
 
@@ -124,7 +122,12 @@ export class App {
 
       then = now - (delta % this.fps);
 
-      counter.innerText = `남은 문자 개수: ${this.chars.length}`;
+      const charCount = this.inputs.length + this.chars.length;
+
+      if (prevCount !== charCount) {
+        prevCount = charCount;
+        counter.innerText = `남은 문자 개수: ${charCount}`;
+      }
     };
 
     requestAnimationFrame(frame);
