@@ -58,6 +58,7 @@ export class App {
   constructor(attrs) {
     this.canvas = attrs.canvas;
     this.ctx = this.canvas.getContext("2d");
+    this.dpr = window.devicePixelRatio > 1 ? 2 : 1;
     this.width = attrs.width;
     this.height = attrs.height;
     this.fps = attrs.fps;
@@ -68,8 +69,8 @@ export class App {
     this.inputs = [];
     this.chars = [];
 
-    this.canvas.width = this.width;
-    this.canvas.height = this.height;
+    this.canvas.width = this.width * this.dpr;
+    this.canvas.height = this.height * this.dpr;
   }
 
   addChars(newInputs) {
