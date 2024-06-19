@@ -1,5 +1,7 @@
 import { getRandomNumber } from "./utils.js";
 
+const counter = document.getElementById("remain-char-counter");
+
 class Char {
   constructor(attrs) {
     this.x = attrs.x;
@@ -95,7 +97,7 @@ export class App {
         (!lastCharAdded || now - lastCharAdded > this.interval)
       ) {
         const newChar = new Char({
-          x: getRandomNumber(0, this.width),
+          x: getRandomNumber(this.fontSize, this.width - this.fontSize),
           y: 0,
           dy: getRandomNumber(3, 7),
           char: this.inputs.shift(),
@@ -120,6 +122,8 @@ export class App {
       }
 
       then = now - (delta % this.fps);
+
+      counter.innerText = `남은 문자 개수: ${this.chars.length}`;
     };
 
     requestAnimationFrame(frame);

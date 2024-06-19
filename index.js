@@ -1,4 +1,5 @@
 import { App } from "./app.js";
+import { getRandomNumber } from "./utils.js";
 
 const canvas = document.getElementById("rain-canvas");
 const input = document.getElementById("characters-input");
