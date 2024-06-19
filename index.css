@@ -1,0 +1,49 @@
+html {
+  width: 100vw;
+  height: 100vh;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  background-color: #000;
+}
+
+body > div#wrapper {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+body > div#wrapper > canvas#rain-canvas {
+  width: 100%;
+  height: 100%;
+}
+
+body > div#wrapper > input#characters-input {
+  position: absolute;
+  top: 90%;
+  padding: 16px;
+  font-size: 2rem;
+  width: 90%;
+  height: 32px;
+  margin-top: auto;
+  border-width: 0;
+  border-radius: 16px;
+  z-index: 999;
+}
+
+body > div#wrapper > input#characters-input:focus {
+  outline: none;
+}
+
+@font-face {
+  font-family: "BaeminJua";
+  src: url("/fonts/BMJUA_ttf.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
